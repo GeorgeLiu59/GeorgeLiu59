@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="300" viewBox="0 0 850 300">
+  <defs>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#36BCF7" stroke-width="0.3" opacity="0.15"/>
+    </pattern>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="35"/>
+    </filter>
+    <linearGradient id="nameGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#36BCF7"/>
+      <stop offset="100%" stop-color="#f72585"/>
+    </linearGradient>
+    <linearGradient id="shimmerLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="30%" stop-color="#36BCF7"/>
+      <stop offset="70%" stop-color="#f72585"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(30px, 30px); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 0; transform: scale(2); }
+    }
+    @keyframes orbDrift1 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(30px, 20px); }
+    }
+    @keyframes orbDrift2 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-25px, -20px); }
+    }
+
+    .grid-bg { animation: gridMove 15s linear infinite; }
+    .orb1 { animation: orbDrift1 10s ease-in-out infinite; }
+    .orb2 { animation: orbDrift2 12s ease-in-out infinite; }
+    .cursor { animation: blink 0.8s step-end infinite; }
+    .pulse-ring { animation: pulse 2s ease-in-out infinite; transform-origin: center; }
+    .bottom-glow { animation: shimmer 3s ease-in-out infinite; }
+
+    .a1 { animation: fadeIn 0.6s ease both; animation-delay: 0.1s; }
+    .a2 { animation: fadeIn 0.6s ease both; animation-delay: 0.25s; }
+    .a3 { animation: fadeIn 0.6s ease both; animation-delay: 0.4s; }
+    .a4 { animation: fadeIn 0.6s ease both; animation-delay: 0.55s; }
+    .a5 { animation: fadeIn 0.6s ease both; animation-delay: 0.7s; }
+    .a6 { animation: fadeIn 0.6s ease both; animation-delay: 0.85s; }
+  </style>
+
+  <!-- Background -->
+  <rect width="850" height="300" fill="#0a0a0f" rx="10"/>
+
+  <!-- Grid -->
+  <g class="grid-bg"><rect x="-30" y="-30" width="920" height="360" fill="url(#grid)"/></g>
+
+  <!-- Orbs -->
+  <circle class="orb1" cx="100" cy="60" r="120" fill="#36BCF7" opacity="0.05" filter="url(#softGlow)"/>
+  <circle class="orb2" cx="740" cy="250" r="100" fill="#f72585" opacity="0.04" filter="url(#softGlow)"/>
+
+  <!-- Terminal bar -->
+  <rect x="0" y="0" width="850" height="30" fill="#16161e" rx="10"/>
+  <rect x="0" y="15" width="850" height="15" fill="#16161e"/>
+  <line x1="0" y1="30" x2="850" y2="30" stroke="#1a1a2e" stroke-width="1"/>
+  <circle cx="16" cy="15" r="4.5" fill="#ff5f57"/>
+  <circle cx="32" cy="15" r="4.5" fill="#febc2e"/>
+  <circle cx="48" cy="15" r="4.5" fill="#28c840"/>
+  <text x="68" y="19" font-family="monospace" font-size="10.5" fill="#6b6b80" letter-spacing="0.4">george@research ~ README.md</text>
+
+  <!-- ROW 1: Greeting (y=65) -->
+  <text class="a1" x="40" y="65" font-family="monospace" font-size="10" fill="#36BCF7" letter-spacing="2.5" opacity="0">HELLO, WORLD —</text>
+
+  <!-- ROW 2: Name + subtitle (y=100) -->
+  <text class="a2" x="40" y="100" font-family="monospace" font-size="34" font-weight="bold" fill="url(#nameGrad)" opacity="0">George</text>
+  <text class="a2" x="245" y="100" font-family="monospace" font-size="13" fill="#6b6b80" opacity="0">CS Researcher · <tspan fill="#e0e0e8" font-weight="bold">Computer Vision</tspan></text>
+
+  <!-- ROW 3: Tagline (y=130) -->
+  <g class="a3" opacity="0">
+    <text x="40" y="130" font-family="monospace" font-size="12" fill="#36BCF7">$ human_cognition → efficient_vision_systems</text>
+    <rect class="cursor" x="400" y="118" width="7" height="14" fill="#36BCF7"/>
+  </g>
+
+  <!-- Divider (y=150) -->
+  <line class="a3" x1="40" y1="150" x2="810" y2="150" stroke="#1a1a2e" stroke-width="1" opacity="0"/>
+
+  <!-- ROW 4: Status badges (y=165) -->
+  <g class="a4" opacity="0">
+    <rect x="40" y="165" width="310" height="30" rx="6" fill="#0d0d15" stroke="#1a1a2e" stroke-width="1"/>
+    <circle cx="58" cy="180" r="3.5" fill="#4ade80"/>
+    <circle class="pulse-ring" cx="58" cy="180" r="3.5" fill="#4ade80" opacity="0.5"/>
+    <text x="72" y="184" font-family="monospace" font-size="11">
+      <tspan fill="#6b6b80">incoming → </tspan>
+      <tspan fill="#4ade80" font-weight="bold">SWE Intern @ Databricks</tspan>
+    </text>
+
+    <rect x="364" y="165" width="270" height="30" rx="6" fill="#0d0d15" stroke="#1a1a2e" stroke-width="1"/>
+    <text x="380" y="184" font-family="monospace" font-size="11">
+      <tspan fill="#6b6b80">↩ previous → </tspan>
+      <tspan fill="#fbbf24" font-weight="bold">SDE Intern @ AWS</tspan>
+    </text>
+  </g>
+
+  <!-- ROW 5: Label (y=225) -->
+  <text class="a5" x="40" y="225" font-family="monospace" font-size="9" fill="#6b6b80" letter-spacing="1.5" opacity="0">RESEARCH</text>
+
+  <!-- ROW 6: Tags (y=240) -->
+  <g class="a6" opacity="0">
+    <rect x="40" y="240" width="140" height="26" rx="13" fill="none" stroke="#36BCF7" stroke-width="1" opacity="0.6"/>
+    <text x="110" y="257" font-family="monospace" font-size="10" fill="#36BCF7" text-anchor="middle">Efficient CV</text>
+
+    <rect x="192" y="240" width="150" height="26" rx="13" fill="none" stroke="#36BCF7" stroke-width="1" opacity="0.6"/>
+    <text x="267" y="257" font-family="monospace" font-size="10" fill="#36BCF7" text-anchor="middle">Human-Centric AI</text>
+
+    <rect x="354" y="240" width="170" height="26" rx="13" fill="none" stroke="#1a1a2e" stroke-width="1"/>
+    <text x="439" y="257" font-family="monospace" font-size="10" fill="#8a8a9e" text-anchor="middle">Video Understanding</text>
+
+    <rect x="536" y="240" width="140" height="26" rx="13" fill="none" stroke="#1a1a2e" stroke-width="1"/>
+    <text x="606" y="257" font-family="monospace" font-size="10" fill="#8a8a9e" text-anchor="middle">World Models</text>
+
+    <rect x="688" y="240" width="120" height="26" rx="13" fill="none" stroke="#1a1a2e" stroke-width="1"/>
+    <text x="748" y="257" font-family="monospace" font-size="10" fill="#8a8a9e" text-anchor="middle">Image Gen</text>
+  </g>
+
+  <!-- Corner accents -->
+  <path d="M 10 288 L 10 278 L 20 278" fill="none" stroke="#36BCF7" stroke-width="1" opacity="0.25"/>
+  <path d="M 840 288 L 840 278 L 830 278" fill="none" stroke="#f72585" stroke-width="1" opacity="0.25"/>
+
+  <!-- Bottom glow -->
+  <rect class="bottom-glow" x="0" y="296" width="850" height="4" fill="url(#shimmerLine)" rx="2"/>
+
+  <!-- Border -->
+  <rect x="0.5" y="0.5" width="849" height="299" rx="10" fill="none" stroke="#1a1a2e" stroke-width="1"/>
+</svg>
